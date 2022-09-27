@@ -16,9 +16,13 @@ function App() {
 
   let [글제목3, 글제목변경3] = useState('2018314009 김희범');
 
+  let [따봉, 따봉변경] = useState(0);
+  //state 변경 함수를 이용해야 state 값을 변경할 수 있고 재렌더링이 일어남.
+
   let posts = '강남 고기 맛집';
   let setting = { color: 'blue', fontSize: '30px' };
 
+  //따봉변경('10'); => 따봉이라는 변수가 10으로 변경됨.
   function 함수() {
     return 100
   }
@@ -29,8 +33,12 @@ function App() {
         {/* <div style={ {color : 'blue', fontSize : '30px'} }>개발 Blog</div> */}
         <div style={setting}>개발 Blog</div>
       </div>
+      <button onClick={() => { 글제목변경('여자 코트 추천') }}>버튼</button>
       <div className="list">
-        <h3>{posts}</h3>
+        <h3>{posts} <span onClick={() => { 따봉변경(따봉 + 1); }}>👍</span> {따봉} </h3>
+        {/* { <span onClick={() => { 따봉 + 1과 같이 state는 그냥 변경하면 안됨. }}> */}
+        {/* <h3>{posts} <span onClick={() => { console.log(1) }}>👍</span>0 </h3> */}
+        {/* span tag를 눌렀을때 이벤트가 발생하도록(따봉 개수가 올라가도록), onCick {함수} or {() => {실행할내용}}만 들어가야함. */}
         <p>9월 17일 발행</p>
         <hr />
       </div>
