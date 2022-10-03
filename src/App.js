@@ -27,13 +27,39 @@ function App() {
     return 100
   }
 
+  function 제목순서바꾸기() {
+    var newArray = [...글제목2];
+    var temp;
+    temp = newArray[0];
+    newArray[0] = newArray[1];
+    newArray[1] = temp;
+
+    글제목변경2(newArray);
+  }
+
+  function 제목바꾸기() {
+    //글제목[0] = 12314115; => 이런식으로 state를 직접 건드리는건 좋지 않음, deep copy 후 copy한 변수를 수정
+
+    /*이런식으로 새로운 변수를 만들어 deep copy를 통해서도 가능
+    var newArray = 글제목; (x) => deep copy(값 복사)가 아닌 값 공유
+    var newArray = [...글제목]; deep copy => object의 경우 []대신 {}로
+    newArray[0] = "여자코트 추천";
+    글제목변경(newArray);
+    */
+    
+    글제목변경("여자 코트 추천"); //state를 완전히 대체해주는 함수
+  }
+
   return (
     <div className="App">
       <div className='black-nav'>
         {/* <div style={ {color : 'blue', fontSize : '30px'} }>개발 Blog</div> */}
         <div style={setting}>개발 Blog</div>
       </div>
-      <button onClick={() => { 글제목변경('여자 코트 추천') }}>버튼</button>
+      {/* <button onClick={() => { 글제목변경('여자 코트 추천') }}>버튼</button> */}
+      <button onClick={제목순서바꾸기}>제목순서 바꾸는 버튼</button>
+      <button onClick={제목바꾸기}>제목 바꾸는 버튼</button>
+      {/* onClick{} 안에 제목바꾸기()로 넣게 되면 바로 함수를 실행하라는 뜻으로 ()를 넣어주면 안됨.*/}
       <div className="list">
         <h3>{posts} <span onClick={() => { 따봉변경(따봉 + 1); }}>👍</span> {따봉} </h3>
         {/* { <span onClick={() => { 따봉 + 1과 같이 state는 그냥 변경하면 안됨. }}> */}
