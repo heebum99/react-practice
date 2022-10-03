@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App() { //function App()도 하나의 component
 
   let [글제목, 글제목변경] = useState('남자 코트 추천');
   //변수 글제목에는 '남자 코트 추천', 글제목변경에는 데이터를 변경하는 함수가 들어간다.
@@ -94,8 +94,35 @@ function App() {
       {/* <h4>{posts}</h4> */}
       {/* <h4>{ 함수() }</h4>  */}
       {/* {}안에 변수명, 함수 등을 통해서 데이터 바인딩 쉽게 가능  */}
+
+      {/* Modal UI 디자인 
+      <div className="modal">
+        <h2>제목</h2>
+        <p>날씨</p>
+        <p>상세내용</p>
+      </div> 
+      */}
+
+      {/* 위의 HTML코드를 한 단어로 줄여쓸 수 있는 방법: component문법 */}
+
+      <Modal></Modal>
+
     </div>
   );
+}
+
+function Modal() {
+  //component 만드는법 => 함수 이름은 대문자로 시작, return() 안에 있는건 태그하나로 묶기.
+  //<div></div>로 묶어도 되고 <></>로 묶어도됨 => fragment문법
+  //어떤걸 component로 만들까? => 반복출현하는 HTML 덩어리들, 자주 변경되는 HTML UI들, 다른 페이지 생성할때
+  //component 단점: state쓸때 복잡함, 상위 component에서 만든 state 쓰려면 props 문법사용
+  return (
+    <div className="modal">
+        <h2>제목</h2>
+        <p>날씨</p>
+        <p>상세내용</p>
+      </div> 
+  )
 }
 
 export default App;
